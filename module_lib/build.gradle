@@ -24,5 +24,29 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    /**
+     * local and support
+     */
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api "com.android.support:appcompat-v7:$lib.v7_ver"
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    /**
+     * 核心第三方
+     */
+    //net:图片加载
+    implementation ('com.github.bumptech.glide:glide:4.5.0'){
+        exclude group: "com.android.support"
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'    //注解配置生效
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.5.0@aar'//ok底层通讯
+    implementation 'jp.wasabeef:glide-transformations:3.0.0'          //图片变换
+    //het:文件下载，json解析
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.zhy:okhttputils:2.6.2'                        //鸿洋:网络框架基础封装
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'   //请求日志打印
+//    implementation 'com.google.code.gson:gson:2.8.2'                  //json解析
+    /**
+     * 其他
+     */
 }
