@@ -1,0 +1,53 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+    }
+
+    ext {
+        /**
+         *  编译ver
+         */
+        config = [
+                build_ver  : "27.0.3",
+                compile_ver: 27,
+                min_ver    : 16,
+                max_ver    : 22,
+        ]
+        /**
+         * 依赖库ver
+         */
+        lib = [
+                v7_ver: "27.+"
+
+        ]
+        /**
+         * 其他依赖
+         */
+        other = [
+
+
+        ]
+    }
+}
+
+/**
+ * lib仓库：
+ * google：官方support
+ * jcenter：三方补充
+ * jitpack：项目引用库
+ */
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
