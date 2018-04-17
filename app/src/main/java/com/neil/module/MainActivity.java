@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fun() {
-        String url = "https://upload-images.jianshu.io/upload_images/3067059-22f6fe754c8e3267.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/437";
-        HttpImg.display(iv01,url);
+        String url = "http://img4.imgtn.bdimg.com/it/u=992580493,23796831&fm=27&gp=0.jpg";
+        HttpImg.display(iv01,url,HttpImg.Options.TRANSFORM_CIRCLE|HttpImg.Options.TRANSFORM_BLUR);
     }
 }

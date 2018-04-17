@@ -10,7 +10,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.neil.module_lib.config.LibConfig;
 import com.neil.module_lib.util.LibUtil;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,17 +27,19 @@ public class HttpImg {
      * 常见图片效果：
      * 裁剪圆角，圆形    >灰度化    >模糊
      */
-    public static final int TRANSFORM_NONE = 0;
-    public static final int TRANSFORM_CIRCLE = 1 << 0;
-    public static final int TRANSFORM_ROUNDERCORNE = 1 << 1;
-    public static final int TRANSFORM_GRAYSCALE = 1 << 2;
-    public static final int TRANSFORM_BLUR = 1 << 3;
+    public interface Options {
+        int TRANSFORM_NONE = 0;
+        int TRANSFORM_CIRCLE = 1 << 0;
+        int TRANSFORM_ROUNDERCORNE = 1 << 1;
+        int TRANSFORM_GRAYSCALE = 1 << 2;
+        int TRANSFORM_BLUR = 1 << 3;
+    }
 
     /**
      * @param res 数据源：String  >File,Uri,resId,asset    >byte,bitmap,drawable
      */
     public static void display(ImageView iv, Object res) {
-        display(iv, res, TRANSFORM_NONE);
+        display(iv, res, Options.TRANSFORM_NONE);
     }
 
     /**
@@ -64,16 +65,16 @@ public class HttpImg {
         if (transform == 0)
             return new RequestOptions();
         List<Transformation> list = new ArrayList<Transformation>();
-        if ((transform & TRANSFORM_CIRCLE) != 0) {
+        if ((transform & Options.TRANSFORM_CIRCLE) != 0) {
             list.add(new CircleCrop());
         }
-        if ((transform & TRANSFORM_ROUNDERCORNE) != 0) {
+        if ((transform & Options.TRANSFORM_ROUNDERCORNE) != 0) {
             list.add(new RoundedCornersTransformation(LibUtil.dp2px(iv.getContext(), 50f), 0, RoundedCornersTransformation.CornerType.ALL));
         }
-        if ((transform & TRANSFORM_GRAYSCALE) != 0) {
+        if ((transform & Options.TRANSFORM_GRAYSCALE) != 0) {
             list.add(new GrayscaleTransformation());
         }
-        if ((transform & TRANSFORM_BLUR) != 0) {
+        if ((transform & Options.TRANSFORM_BLUR) != 0) {
             list.add(new BlurTransformation());
         }
         return new RequestOptions()

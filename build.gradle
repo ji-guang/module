@@ -24,7 +24,8 @@ buildscript {
          * 依赖库ver
          */
         lib = [
-                v7_ver: "27.+"
+                v7_ver: "27.+",
+                glide_ver:"4.5.0"
 
         ]
         /**
@@ -39,9 +40,9 @@ buildscript {
 
 /**
  * lib仓库：
- * google：官方support
- * jcenter：三方补充
- * jitpack：项目引用库
+ *      google：官方support
+ *      jcenter：三方补充
+ *      jitpack：项目引用库
  */
 allprojects {
     repositories {
