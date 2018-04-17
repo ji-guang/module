@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 
 def lib = rootProject.ext.lib
 def config = rootProject.ext.config
+apply plugin: 'com.github.dcendents.android-maven'  //jitpack配置
+group='com.github.ji-guang'
 
 android {
     buildToolsVersion config.build_ver
