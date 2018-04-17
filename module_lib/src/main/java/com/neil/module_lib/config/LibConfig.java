@@ -4,7 +4,7 @@ import com.neil.module_lib.R;
 
 /**
  * Created by chen on 2018/3/28.
- * 库静态资源配置
+ * 静态资源配置
  */
 public interface LibConfig {
     /**

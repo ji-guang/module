@@ -27,7 +27,8 @@ buildscript {
          */
         lib = [
                 v7_ver: "27.+",
-                glide_ver:"4.5.0"
+                glide_ver:"4.5.0",
+                okhttp_ver:"3.9.0"
 
         ]
         /**
