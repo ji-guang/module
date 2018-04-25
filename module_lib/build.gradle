@@ -12,8 +12,8 @@ android {
     defaultConfig {
         minSdkVersion config.min_ver
         targetSdkVersion config.max_ver
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.0.04"
     }
 
     buildTypes {
@@ -31,12 +31,12 @@ dependencies {
      */
     api fileTree(include: ['*.jar'], dir: 'libs')
     api "com.android.support:appcompat-v7:$lib.v7_ver"
-    api 'com.android.support.constraint:constraint-layout:1.0.2'
+    api 'com.android.support.constraint:constraint-layout:1.1.0'
 
     /**
      * 核心第三方
      */
-    //net:图片加载
+    //Net:图片加载
     implementation ("com.github.bumptech.glide:glide:$lib.glide_ver")
     annotationProcessor "com.github.bumptech.glide:compiler:$lib.glide_ver"    //注解配置生效
     implementation "com.github.bumptech.glide:okhttp3-integration:$lib.glide_ver@aar"//ok底层通讯

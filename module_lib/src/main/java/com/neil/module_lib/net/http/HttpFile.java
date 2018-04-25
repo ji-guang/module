@@ -1,4 +1,4 @@
-package com.neil.module_lib.net;
+package com.neil.module_lib.net.http;
 
 import android.support.annotation.NonNull;
 

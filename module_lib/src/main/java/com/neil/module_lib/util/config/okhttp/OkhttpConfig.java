@@ -1,7 +1,6 @@
-package com.neil.module_lib.config.okhttp;
+package com.neil.module_lib.util.config.okhttp;
 
-import com.neil.module_lib.config.LibConfig;
-import com.neil.module_lib.config.ModuleConfig;
+import com.neil.module_lib.util.config.LibConfig;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.security.SecureRandom;
@@ -21,17 +20,20 @@ import okhttp3.logging.HttpLoggingInterceptor;
  * Created by chen on 2018/4/7.
  */
 
-public class OkhttpClientManager {
+public class OkhttpConfig {
     /**
      * 单例模式:也维护一个ok客户端配置
      */
-    private OkhttpClientManager() { }
-    private static OkhttpClientManager instance;
-    public static OkhttpClientManager getInstance() {
+    private OkhttpConfig() {
+    }
+
+    private static OkhttpConfig instance;
+
+    public static OkhttpConfig getInstance() {
         if (instance == null) {
-            synchronized (OkhttpClientManager.class) {
+            synchronized (OkhttpConfig.class) {
                 if (instance == null) {
-                    instance = new OkhttpClientManager();
+                    instance = new OkhttpConfig();
                 }
             }
         }
@@ -39,14 +41,16 @@ public class OkhttpClientManager {
     }
 
     private OkHttpClient client;
+
     /**
      * 初始化client
      */
-    public void init(){
+    public void init() {
         client = initClient();
         OkHttpUtils.initClient(client);
     }
     //-------------------------------------init-----------------------------
+
     /**
      * TODO 配置OKHttpClient 1:ssl 2:超时配置
      */
@@ -58,13 +62,13 @@ public class OkhttpClientManager {
                 .hostnameVerifier(getHoseVerifier())
                 .sslSocketFactory(getSSLContext(getTrustManager()).getSocketFactory())
                 //配置超时时间
-                .connectTimeout(LibConfig.CONN_TIMEOUT, TimeUnit.MILLISECONDS)
-                .readTimeout(LibConfig.READ_TIMEOUT, TimeUnit.MILLISECONDS)
-                .writeTimeout(LibConfig.Write_TIMEOUT, TimeUnit.MILLISECONDS)
+                .connectTimeout(LibConfig.Net.CONN_TIMEOUT, TimeUnit.MILLISECONDS)
+                .readTimeout(LibConfig.Net.READ_TIMEOUT, TimeUnit.MILLISECONDS)
+                .writeTimeout(LibConfig.Net.Write_TIMEOUT, TimeUnit.MILLISECONDS)
                 //错误重连
                 .retryOnConnectionFailure(true);
         //日志拦截
-        if (ModuleConfig.SystemConfig.isDegug) {
+        if (LibConfig.Config.isDegug) {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
             builder.addInterceptor(logging);

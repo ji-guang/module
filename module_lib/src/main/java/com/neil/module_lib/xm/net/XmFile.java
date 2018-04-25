@@ -1,8 +1,6 @@
 package com.neil.module_lib.xm.net;
 
-import com.neil.module_lib.net.HttpFile;
-
-import org.json.JSONObject;
+import com.neil.module_lib.net.http.HttpFile;
 
 import java.io.File;
 import java.net.URLEncoder;
@@ -32,17 +30,6 @@ public class XmFile {
     }
 
     /**
-     * @return  objId > url
-     */
-    public static String getUrlByDocId(String url,String token,String objId){
-        try {
-            return url + "?params="+ URLEncoder.encode("{\"token\":\""+token+"\",\"content\":{\"objId\":\""+objId+"\"}}","utf-8");
-        } catch (Exception e) {
-            return "";
-        }
-    }
-
-    /**
      *  上传获得objId
      */
     public static void uploadbyXm(String url, File file, String type,HttpFile.UploadCallback callback){
@@ -52,5 +39,16 @@ public class XmFile {
         String fileName = "file";
 
         HttpFile.upload(url, params,fileName, file,callback);
+    }
+
+    /**
+     * @return  objId > url
+     */
+    public static String getUrlByDocId(String url,String token,String objId){
+        try {
+            return url + "?params="+ URLEncoder.encode("{\"token\":\""+token+"\",\"content\":{\"objId\":\""+objId+"\"}}","utf-8");
+        } catch (Exception e) {
+            return "";
+        }
     }
 }

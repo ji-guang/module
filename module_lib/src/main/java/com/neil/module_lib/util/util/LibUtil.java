@@ -1,4 +1,4 @@
-package com.neil.module_lib.util;
+package com.neil.module_lib.util.util;
 
 import android.content.Context;
 

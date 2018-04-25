@@ -1,4 +1,4 @@
-package com.neil.module_lib.net;
+package com.neil.module_lib.net.http;
 
 import android.widget.ImageView;
 
@@ -7,8 +7,8 @@ import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
-import com.neil.module_lib.config.LibConfig;
-import com.neil.module_lib.util.LibUtil;
+import com.neil.module_lib.util.config.LibConfig;
+import com.neil.module_lib.util.util.LibUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,17 +47,24 @@ public class HttpImg {
      * @param transform 图片处理效果（可组合）
      */
     public static void display(ImageView iv, Object res, int transform) {
+        displayImp(iv, res, transform);
+    }
+
+    //--------------------------------------------------------
+    /**
+     * 实现：显示
+     */
+    private static void displayImp(ImageView iv, Object res, int transform) {
         try {
             Glide.with(iv.getContext())
                     .load(res)
                     .apply(getRequestOptions(iv, transform))        //变换效果
-                    .transition(new DrawableTransitionOptions().crossFade(LibConfig.glide_crossFadeTime))//过渡效果
+                    .transition(new DrawableTransitionOptions().crossFade(LibConfig.Net.glide_crossFadeTime))//过渡效果
                     .into(iv);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     /**
      * 实现：组装transform样式
      */
