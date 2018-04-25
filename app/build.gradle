@@ -11,8 +11,8 @@ android {
         targetSdkVersion config.max_ver
 
         applicationId "com.neil.module"
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.0.04"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
