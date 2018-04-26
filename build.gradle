@@ -1,6 +1,28 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+
+    ext {   //主要编译，以及工程常量
+        /**
+         *  编译ver
+         */
+        config = [
+                build_ver       : "27.0.3",
+                compile_ver     : 27,
+                min_ver         : 16,
+                max_ver         : 22,
+                
+        ]
+        /**
+         * 依赖库ver
+         */
+        lib = [
+                v7_ver    : "27.+",
+                glide_ver : "4.5.0",
+                okhttp_ver: "3.9.0"
+        ]
+    }
+
     repositories {
         google()
         jcenter()
@@ -8,35 +30,8 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
+
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'//jitpack编译依赖
-    }
-
-    ext {   //主要编译，以及工程常量
-        /**
-         *  编译ver
-         */
-        config = [
-                build_ver  : "27.0.3",
-                compile_ver: 27,
-                min_ver    : 16,
-                max_ver    : 22,
-        ]
-        /**
-         * 依赖库ver
-         */
-        lib = [
-                v7_ver: "27.+",
-                glide_ver:"4.5.0",
-                okhttp_ver:"3.9.0"
-
-        ]
-        /**
-         * 其他依赖
-         */
-        other = [
-
-
-        ]
     }
 }
 
