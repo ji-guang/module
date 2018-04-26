@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 def lib = rootProject.ext.lib
 def config = rootProject.ext.config
 apply plugin: 'com.github.dcendents.android-maven'  //jitpack配置
-group='com.github.ji-guang'
+group = 'com.github.ji-guang'
 
 android {
     buildToolsVersion config.build_ver
@@ -12,8 +12,8 @@ android {
     defaultConfig {
         minSdkVersion config.min_ver
         targetSdkVersion config.max_ver
-        versionCode 4
-        versionName "1.0.04"
+        versionCode 5
+        versionName "1.0.05"
     }
 
     buildTypes {
@@ -27,6 +27,21 @@ android {
 
 dependencies {
     /**
+     * mvvm：数据驱动architecture component
+     *  Lifecycles, LiveData 和 ViewModel
+     */
+    api "android.arch.lifecycle:runtime:$config.architecture_ver"
+    api "android.arch.lifecycle:extensions:$config.architecture_ver"
+    annotationProcessor "android.arch.lifecycle:compiler:$config.architecture_ver"
+
+    /**
+     * kotlin：语言
+     */
+    api "org.jetbrains.kotlin:kotlin-stdlib:$config.kotlin_ver"
+    api "org.jetbrains.anko:anko-common:$config.anko_ver"
+    api "androidx.core:core-ktx:$config.ktx_ver"
+
+    /**
      * local and support
      */
     api fileTree(include: ['*.jar'], dir: 'libs')
@@ -34,10 +49,10 @@ dependencies {
     api 'com.android.support.constraint:constraint-layout:1.1.0'
 
     /**
-     * 核心第三方
+     * 网络：param，json，img，file
      */
     //Net:图片加载
-    implementation ("com.github.bumptech.glide:glide:$lib.glide_ver")
+    implementation("com.github.bumptech.glide:glide:$lib.glide_ver")
     annotationProcessor "com.github.bumptech.glide:compiler:$lib.glide_ver"    //注解配置生效
     implementation "com.github.bumptech.glide:okhttp3-integration:$lib.glide_ver@aar"//ok底层通讯
     implementation 'jp.wasabeef:glide-transformations:3.0.0'          //图片变换
@@ -46,7 +61,6 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$lib.okhttp_ver"   //请求日志打印
     implementation 'com.zhy:okhttputils:2.6.2'                        //鸿洋:网络框架基础封装
     implementation 'com.google.code.gson:gson:2.8.2'                  //json解析
-    /**
-     * 其他
-     */
+
+
 }
