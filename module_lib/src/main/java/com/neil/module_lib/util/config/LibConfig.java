@@ -27,7 +27,7 @@ public class LibConfig {
      */
     public interface Net {
         //glide config
-        int glide_placeholder = R.drawable.ic_launcher;  //glide加载中占位图
+        int glide_placeholder = 0;  //glide加载中占位图
         int glide_error = 0;                             //glide加载失败图
         int glide_crossFadeTime = 300;                   //glide图片过渡时间
         //okhttp

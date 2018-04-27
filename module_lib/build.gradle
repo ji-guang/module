@@ -27,21 +27,6 @@ android {
 
 dependencies {
     /**
-     * mvvm：数据驱动architecture component
-     *  Lifecycles, LiveData 和 ViewModel
-     */
-    api "android.arch.lifecycle:runtime:$config.architecture_ver"
-    api "android.arch.lifecycle:extensions:$config.architecture_ver"
-    annotationProcessor "android.arch.lifecycle:compiler:$config.architecture_ver"
-
-    /**
-     * kotlin：语言
-     */
-    api "org.jetbrains.kotlin:kotlin-stdlib:$config.kotlin_ver"
-    api "org.jetbrains.anko:anko-common:$config.anko_ver"
-    api "androidx.core:core-ktx:$config.ktx_ver"
-
-    /**
      * local and support
      */
     api fileTree(include: ['*.jar'], dir: 'libs')
@@ -61,6 +46,5 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$lib.okhttp_ver"   //请求日志打印
     implementation 'com.zhy:okhttputils:2.6.2'                        //鸿洋:网络框架基础封装
     implementation 'com.google.code.gson:gson:2.8.2'                  //json解析
-
 
 }
