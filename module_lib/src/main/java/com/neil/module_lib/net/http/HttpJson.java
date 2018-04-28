@@ -30,7 +30,7 @@ public class HttpJson {
                     .execute(getCallback(callback));
         } catch (Exception e) {
             LogUtil.e(e.getLocalizedMessage());
-            callback.onback(false, null, "err:" + e.getMessage());
+            callback.onback(false, GsonUtil.fromJson(null, callback.getTClass()), "err:" + e.getMessage());
         }
     }
 
@@ -43,7 +43,8 @@ public class HttpJson {
             @Override
             public void onError(Call call, Exception e, int id) {
                 LogUtil.e(e.getLocalizedMessage());
-                callback.onback(false, null, "err:" + e.getMessage());
+
+                callback.onback(false, GsonUtil.fromJson(null, callback.getTClass()), "err:" + e.getMessage());
             }
 
             @Override
@@ -53,9 +54,6 @@ public class HttpJson {
                 if (String.class.isAssignableFrom(callback.getTClass())) {
                     callback.onback(true, (T) str, "success");
                 } else {
-                    if (TextUtils.isEmpty(str)) {    //确保以json，生成bean
-                        str = "{}";
-                    }
                     callback.onback(true, GsonUtil.fromJson(str, callback.getTClass()), "success");
                 }
             }
