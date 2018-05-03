@@ -11,7 +11,7 @@ buildscript {
                 compile_ver     : 27,
                 min_ver         : 16,
                 max_ver         : 22,
-                
+
         ]
         /**
          * 依赖库ver

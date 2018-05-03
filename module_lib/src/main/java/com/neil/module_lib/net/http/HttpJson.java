@@ -20,15 +20,16 @@ public class HttpJson {
      * json请求
      */
     public static <T> void request(String url, String postJson, HttpJsonCallback<T> callback) {
+        String urlParams = url + "\n" + postJson;
         try {
-            LogUtil.e(url + "\n" + postJson);
             OkHttpUtils.postString()
                     .url(url)
                     .content(postJson)
                     .mediaType(MediaType.parse("application/json; charset=utf-8"))
                     .build()
-                    .execute(getCallback(callback));
+                    .execute(getCallback(callback, urlParams));
         } catch (Exception e) {
+            LogUtil.e(urlParams);
             LogUtil.e(e.getLocalizedMessage());
             callback.onback(false, GsonUtil.fromJson(null, callback.getTClass()), "err:" + e.getMessage());
         }
@@ -38,10 +39,11 @@ public class HttpJson {
      * 回调封装处理
      */
     @NonNull
-    private static <T> StringCallback getCallback(final HttpJsonCallback<T> callback) {
+    private static <T> StringCallback getCallback(final HttpJsonCallback<T> callback, final String urlParams) {
         return new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
+                LogUtil.e(urlParams);
                 LogUtil.e(e.getLocalizedMessage());
 
                 callback.onback(false, GsonUtil.fromJson(null, callback.getTClass()), "err:" + e.getMessage());
@@ -49,6 +51,7 @@ public class HttpJson {
 
             @Override
             public void onResponse(String str, int id) {
+                LogUtil.e(urlParams);
                 LogUtil.e(str);
 
                 if (String.class.isAssignableFrom(callback.getTClass())) {

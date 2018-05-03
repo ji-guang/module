@@ -5,14 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.neil.module.data.net.modle.SendCodeModle;
-import com.neil.module_lib.net.core.BaseMap;
-import com.neil.module_lib.net.core.Observer;
-import com.neil.module_lib.util.util.LogUtil;
-import com.neil.module_lib.xm.net.XmJsonModle;
-
-import java.util.Map;
-
 public class MainActivity extends AppCompatActivity {
 
     ImageView iv01;
@@ -43,18 +35,44 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        new SendCodeModle().request(new BaseMap<Object>() {
-            @Override
-            protected void initMap(Map<String, Object> map) {
-                map.put(SendCodeModle.Params.custMbl,"13676016799");
-                map.put(SendCodeModle.Params.type,0);
-            }
-        }, new Observer<String>() {
-            @Override
-            public void update(boolean success, String s, String msg) {
-                LogUtil.e(success+"\n"+s+"\n"+msg);
-            }
-        });
+//        new SendCodeModle().request(new BaseMap<Object>() {
+//            @Override
+//            protected void initMap(Map<String, Object> map) {
+//                map.put(SendCodeModle.Params.custMbl,"13676016799");
+//                map.put(SendCodeModle.Params.type,0);
+//            }
+//        }, new Observer<String>() {
+//            @Override
+//            public void update(boolean success, String s, String msg) {
+////                LogUtil.e(success+"\n"+s+"\n"+msg);
+
+//        });
+
+//        Map<String, Object> map = new BaseMap<Object>() {
+//            @Override
+//            protected void initMap(Map<String, Object> map) {
+//                map.put("name","龚京栋");
+//                map.put("cardType",0);
+//                map.put("mcNo","10040011137");
+//                map.put("cardNo","430621199208227016");
+//
+//                map.put("osVers","5.1");
+//            }
+//        }.getMap();
+//
+//        new CreditStatusModle(map).request(new BaseMap<Object>() {
+//            @Override
+//            protected void initMap(Map<String, Object> map) {
+//                map.put(CreditStatusModle.Params.creditStatusFlag,"1");
+//                map.put(CreditStatusModle.Params.all,"1");
+//            }
+//        }, new Observer<String>() {
+//            @Override
+//            public void update(boolean success, String s, String msg) {
+//
+//            }
+//        });
+
     }
 
 }
