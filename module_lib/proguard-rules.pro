@@ -28,9 +28,9 @@
   public *;
 }
 -dontwarn com.bumptech.glide.load.resource.bitmap.VideoDecoder
--keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+#-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 
--keep public class  extends com.bumptech.glide.module.AppGlideModule
+#-keep public class  extends com.bumptech.glide.module.AppGlideModule
 -keep class com.bumptech.glide.GeneratedAppGlideModuleImpl
 -dontwarn com.bumptech.glide.load.resource.bitmap.VideoDecoder
 
