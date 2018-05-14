@@ -32,7 +32,7 @@ public class GlideConfig extends AppGlideModule {
                 .skipMemoryCache(false)
                 .placeholder(LibConfig.Net.glide_placeholder)
                 .error(LibConfig.Net.glide_error)
-                .format(DecodeFormat.PREFER_RGB_565)
+                .format(DecodeFormat.PREFER_ARGB_8888)  //gif缩放背景问题 565
                 .fitCenter()
         );
     }
